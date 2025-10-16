@@ -152,16 +152,16 @@ class Ball {
 
   showDebug() {
     push();
-    stroke("white");
+    stroke('white');
     line(
       this.pos.x,
       this.pos.y,
       this.pos.x + this.vel.x * 10,
       this.pos.y + this.vel.y * 10
     );
-    stroke("red");
+    stroke('red');
     line(this.pos.x, this.pos.y, this.pos.x + this.vel.x * 10, this.pos.y);
-    stroke("green");
+    stroke('green');
     line(this.pos.x, this.pos.y, this.pos.x, this.pos.y + this.vel.y * 10);
     pop();
   }
