@@ -1,5 +1,5 @@
 class Vehicle {
-  constructor(x, y, maxSpeed = 5, maxForce = 0.01) {
+  constructor(x, y, maxSpeed = 5, maxForce = 0.1) {
     this.pos = createVector(x, y);
     this.vel = createVector(0, 0);
     this.acc = createVector(0, 0);
