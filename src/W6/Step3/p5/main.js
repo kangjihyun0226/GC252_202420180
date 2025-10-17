@@ -3,7 +3,7 @@ let mouse;
 const showFlags = [
   false,
   false,
-  true,
+  false,
   true,
   true,
   true,
@@ -19,9 +19,14 @@ function setup() {
   animal = new Animal(
     width / 2,
     height / 4,
-    // 원 사이의 크기
-    30,
-    [30, 40, 35, 35, 35, 35, 35, 35, 35, 35, 30, 25, 20, 15, 10, 5]
+    20,
+    [radians(170), radians(190)],
+    // 원의 크기들
+
+    [
+      30, 45, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35,
+      35, 35, 35, 35, 30, 25, 20, 15,
+    ]
   );
 
   mouse = createVector(width / 2, height / 4);
