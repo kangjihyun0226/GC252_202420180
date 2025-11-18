@@ -7,7 +7,7 @@ const numPursuers = 2;
 const seed = 0;
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(1000, 600);
   randomSeed(seed);
 
   // Evader 생성 (Animal 사용)
@@ -48,7 +48,7 @@ function setup() {
       [radians(170), radians(190)],
       [
         20, 30, 40, 50, 60, 80, 100, 120, 140, 150, 155, 160, 140, 120, 100, 60,
-        60, 55, 50, 25, 10, 10, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+        55, 50, 25, 10, 10, 5, 5, 5, 5, 5, 5, 5, 5, 5,
       ]
     );
 
