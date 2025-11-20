@@ -135,7 +135,7 @@ class Animal {
   showBodyShape() {
     push();
     noStroke();
-    fill('#FF8040');
+    fill('#FF7F3E');
     beginShape();
     this.bodyPoints.forEach((p) => {
       curveVertex(p.x, p.y);
@@ -151,7 +151,7 @@ class Animal {
     translate(right.x, right.y);
     rotate(this.head.heading);
     noStroke();
-    fill('#FF8040');
+    fill('#FF7F3E');
     rectMode(CENTER);
     rect(0, 0, 15, 10, 5);
     pop();
@@ -159,7 +159,7 @@ class Animal {
     translate(left.x, left.y);
     rotate(this.head.heading);
     noStroke();
-    fill('#FF8040');
+    fill('#FF7F3E');
     rectMode(CENTER);
     rect(0, 0, 15, 10, 5);
     pop();

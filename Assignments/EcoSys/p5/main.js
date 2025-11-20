@@ -6,11 +6,22 @@ const pursuers = [];
 const numPursuers = 2;
 const seed = 0;
 let target;
+let bubbles = [];
 
 function setup() {
   createCanvas(1000, 600);
   randomSeed(seed);
   target = createVector(mouseX, mouseY);
+
+  for (let i = 0; i < 20; i++) {
+    let x = random(50, width - 50);
+    let y = random(50, height - 50);
+    let diameter = random(20, 50);
+    let speed = random(1, 2);
+    let colour = color('#FFF6E9');
+
+    bubbles.push(new bubble(x, y, diameter, speed, colour));
+  }
 
   // Evader 생성 (Animal 사용)
   for (let n = 0; n < numEvaders; n++) {
@@ -59,7 +70,13 @@ function setup() {
 }
 
 function draw() {
-  background('#0046FF');
+  background('#80C4E9');
+
+  for (let i = 0; i < bubbles.length; i++) {
+    bubbles[i].update();
+    bubbles[i].resolveWallCollision();
+    bubbles[i].show();
+  }
 
   // Evaders (피식자) 업데이트
   for (const fish of evaders) {
@@ -67,7 +84,7 @@ function draw() {
       target.set(mouseX, mouseY);
     }
 
-    fill(255, 0, 0);
+    fill('#A16D28');
     noStroke();
     circle(target.x, target.y, 16);
     fish.evader.seek(target);

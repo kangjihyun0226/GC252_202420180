@@ -135,7 +135,7 @@ class Animal2 {
   showBodyShape() {
     push();
     noStroke();
-    fill('#001BB7');
+    fill('#4335A7');
     beginShape();
     this.bodyPoints.forEach((p) => {
       curveVertex(p.x, p.y);
