@@ -5,10 +5,12 @@ const numEvaders = 5;
 const pursuers = [];
 const numPursuers = 2;
 const seed = 0;
+let target;
 
 function setup() {
   createCanvas(1000, 600);
   randomSeed(seed);
+  target = createVector(mouseX, mouseY);
 
   // Evader 생성 (Animal 사용)
   for (let n = 0; n < numEvaders; n++) {
@@ -61,6 +63,15 @@ function draw() {
 
   // Evaders (피식자) 업데이트
   for (const fish of evaders) {
+    if (mouseIsPressed) {
+      target.set(mouseX, mouseY);
+    }
+
+    fill(255, 0, 0);
+    noStroke();
+    circle(target.x, target.y, 16);
+    fish.evader.seek(target);
+
     fish.evader.update();
 
     // pursuers의 pursuer만 추출
