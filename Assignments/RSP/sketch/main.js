@@ -5,7 +5,7 @@ const INITIAL_W = 800;
 const INITIAL_H = 600;
 const INITIAL_RATIO = INITIAL_W / INITIAL_H;
 
-const cellsPerRow = 200;
+const cellsPerRow = 100;
 let cellsPerColumn;
 const cells = [];
 let cellSize;
@@ -27,7 +27,8 @@ function getIdx(r, c) {
 }
 
 let lastTime = 0;
-const interval = 80;
+// 코드흐름
+const interval = 30;
 
 function setup() {
   renderer = createCanvas(INITIAL_W, INITIAL_H);
