@@ -26,7 +26,7 @@ class Cell {
     if (!randomNeighbor) return;
 
     const myState = this.state;
-    const opponentState = randomNeighbor.state;
+    const opState = randomNeighbor.state;
 
     // 가위바위보 규칙
     // 가위(0)는 보(2)를 이김
@@ -34,11 +34,11 @@ class Cell {
     // 보(2)는 바위(1)를 이김
 
     // help
-    if (myState === 0 && opponentState === 1) {
+    if (myState === 0 && opState === 1) {
       this.nextState = 1; // 바위가 가위를 이김
-    } else if (myState === 1 && opponentState === 2) {
+    } else if (myState === 1 && opState === 2) {
       this.nextState = 2; // 보가 바위를 이김
-    } else if (myState === 2 && opponentState === 0) {
+    } else if (myState === 2 && opState === 0) {
       this.nextState = 0; // 가위가 보를 이김
     }
     // 같은 상태거나 내가 이기면 변화 없음
