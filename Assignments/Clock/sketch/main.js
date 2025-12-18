@@ -140,7 +140,7 @@ function draw() {
   let mColor;
   let hColor;
 
-  if (hr >= 6 || hr < 18) {
+  if (hr >= 6 && hr < 18) {
     // 6시 ~ 18시: 하늘색
     bgColor = '#EDF7FA';
     sColor = '#5F6CAF';
@@ -179,7 +179,7 @@ function draw() {
     Composite.remove(world, ballToRemove);
   }
 
-  // 시 공 개수 동기화 (1~12시)
+  // 시 공
   if (hourBalls.length < currentHour) {
     dropHBall();
   } else if (hourBalls.length > currentHour) {
