@@ -23,9 +23,9 @@ let world;
 let secondBalls = [];
 let secondR = 8;
 let minuteBalls = [];
-let minuteR = 16;
+let minuteR = 18;
 let hourBalls = [];
-let hourR = 32;
+let hourR = 38;
 
 function setup() {
   // 기본 설정
@@ -71,7 +71,6 @@ function setup() {
 
   // 엔진 실행
   const runner = Runner.create();
-  // 러너를 시작하고 엔진에 연결합니다. 이제 시뮬레이션이 자동으로 업데이트됩니다.
   Runner.run(runner, engine);
 
   // help..
@@ -135,27 +134,47 @@ function timeToDegrees(time, range) {
 }
 
 function draw() {
-  background('#001F3D');
+  const hr = hour();
+  let bgColor;
+  let sColor;
+  let mColor;
+  let hColor;
+
+  if (hr >= 6 || hr < 18) {
+    // 6시 ~ 18시: 하늘색
+    bgColor = '#EDF7FA';
+    sColor = '#5F6CAF';
+    mColor = '#FFB677';
+    hColor = '#FF8364';
+  } else {
+    // 0시 ~ 6시  / 18시 ~ 24시: 검정색
+    bgColor = '#282F44';
+    sColor = '#ECECEC';
+    mColor = '#EAA64D';
+    hColor = '#A16D28';
+  }
+
+  background(bgColor);
 
   // 현재 시각 가져오기
   const currentSecond = second();
   const currentMinute = minute();
   const currentHour = hour() % 12 === 0 ? 12 : hour() % 12;
 
-  // 초 공 개수 동기화 (0~59초)
+  // 초 공
   if (secondBalls.length < currentSecond) {
     dropSBall();
   } else if (secondBalls.length > currentSecond) {
-    // 60초 -> 0초로 넘어갈 때 모든 초 공 제거
+    // 0초로 넘어갈 때 모든 초 공 제거
     const ballToRemove = secondBalls.shift();
     Composite.remove(world, ballToRemove);
   }
 
-  // 분 공 개수 동기화 (0~59분)
+  // 분 공
   if (minuteBalls.length < currentMinute) {
     dropMBall();
   } else if (minuteBalls.length > currentMinute) {
-    // 60분 -> 0분으로 넘어갈 때 모든 분 공 제거
+    //0분으로 넘어갈 때 모든 분 공 제거
     const ballToRemove = minuteBalls.shift();
     Composite.remove(world, ballToRemove);
   }
@@ -174,26 +193,24 @@ function draw() {
 
   // 벽 렌더링
   walls.forEach((aBody) => {
-    beginShape(); // 다각형 그리기 시작
-    // 벽 바디의 꼭짓점을 순회합니다.
+    beginShape();
     aBody.vertices.forEach((aVertex) => {
       vertex(aVertex.x, aVertex.y);
     });
-    // 다각형을 닫고 그리기 종료 (경계 벽을 흰색 윤곽선으로 그립니다)
     endShape(CLOSE);
   });
 
   // 공 렌더링
-  noStroke();
-  fill('#E6E6E6');
+  noFill();
+  stroke(sColor + '70');
   secondBalls.forEach((ball) => {
     circle(ball.position.x, ball.position.y, secondR * 2);
   });
-  fill('#F7B980');
+  stroke(mColor + '70');
   minuteBalls.forEach((ball) => {
     circle(ball.position.x, ball.position.y, minuteR * 2);
   });
-  fill('#ED985F');
+  stroke(hColor + '70');
   hourBalls.forEach((ball) => {
     circle(ball.position.x, ball.position.y, hourR * 2);
   });
@@ -202,7 +219,7 @@ function draw() {
   let mAngleDeg = timeToDegrees(minute(), 60);
   let sAngleDeg = timeToDegrees(second(), 60);
 
-  drawTimeHand(hAngleDeg, width * 0.3, '#ED985F', 5);
-  drawTimeHand(mAngleDeg, width * 0.4, '#F7B980', 5);
-  drawTimeHand(sAngleDeg, width * 0.48, '#E6E6E6', 3);
+  drawTimeHand(hAngleDeg, width * 0.3, hColor, 5);
+  drawTimeHand(mAngleDeg, width * 0.4, mColor, 5);
+  drawTimeHand(sAngleDeg, width * 0.48, sColor, 3);
 }
