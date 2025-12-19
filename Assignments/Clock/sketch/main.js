@@ -21,11 +21,11 @@ let walls;
 let engine;
 let world;
 let secondBalls = [];
-let secondR = 5;
+let secondR = 8;
 let minuteBalls = [];
-let minuteR = 12;
+let minuteR = 18;
 let hourBalls = [];
-let hourR = 32;
+let hourR = 38;
 
 function setup() {
   // 기본 설정
@@ -97,21 +97,21 @@ function setup() {
 
 // 초 공을 떨어뜨리는 함수
 function dropSBall() {
-  const sBall = Bodies.circle(width * 0.5, 0, secondR + 2.5);
+  const sBall = Bodies.circle(width * 0.5, 0, secondR);
   secondBalls.push(sBall);
   Composite.add(world, sBall);
 }
 
 // 분 공을 떨어뜨리는 함수
 function dropMBall() {
-  const mBall = Bodies.circle(width * 0.5, 0, minuteR + 5);
+  const mBall = Bodies.circle(width * 0.5, 0, minuteR);
   minuteBalls.push(mBall);
   Composite.add(world, mBall);
 }
 
 // 시 공을 떨어뜨리는 함수
 function dropHBall() {
-  const hBall = Bodies.circle(width * 0.5, 0, hourR + 5);
+  const hBall = Bodies.circle(width * 0.5, 0, hourR);
   hourBalls.push(hBall);
   Composite.add(world, hBall);
 }
@@ -140,7 +140,7 @@ function draw() {
   let mColor;
   let hColor;
 
-  if (sr >= 0 && sr < 30) {
+  if (sr >= 0 && sr < 18) {
     // 6시 ~ 18시 : 하늘색
     bgColor = '#EDF7FA';
     sColor = '#5F6CAF';
@@ -202,17 +202,15 @@ function draw() {
 
   // 공 렌더링
   noFill();
-  strokeWeight(5);
-  stroke(sColor + '70');
+  stroke(sColor);
   secondBalls.forEach((ball) => {
     circle(ball.position.x, ball.position.y, secondR * 2);
   });
-  strokeWeight(10);
-  stroke(mColor + '70');
+  stroke(mColor);
   minuteBalls.forEach((ball) => {
     circle(ball.position.x, ball.position.y, minuteR * 2);
   });
-  stroke(hColor + '70');
+  stroke(hColor);
   hourBalls.forEach((ball) => {
     circle(ball.position.x, ball.position.y, hourR * 2);
   });
