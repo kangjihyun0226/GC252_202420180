@@ -140,7 +140,7 @@ function draw() {
   let mColor;
   let hColor;
 
-  if (sr >= 6 && sr < 18) {
+  if (sr >= 0 && sr < 30) {
     // 6시 ~ 18시 : 하늘색
     bgColor = '#EDF7FA';
     sColor = '#5F6CAF';
