@@ -134,13 +134,13 @@ function timeToDegrees(time, range) {
 }
 
 function draw() {
-  const hr = hour();
+  const sr = second();
   let bgColor;
   let sColor;
   let mColor;
   let hColor;
 
-  if (hr >= 6 && hr < 18) {
+  if (sr >= 6 && sr < 18) {
     // 6시 ~ 18시 : 하늘색
     bgColor = '#EDF7FA';
     sColor = '#5F6CAF';
